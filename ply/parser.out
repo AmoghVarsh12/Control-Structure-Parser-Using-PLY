@@ -1,0 +1,613 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement
+Rule 2     program -> program statement
+Rule 3     statement -> if_statement
+Rule 4     statement -> for_statement
+Rule 5     statement -> while_statement
+Rule 6     statement -> simple_statement
+Rule 7     if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE
+Rule 8     if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+Rule 9     for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+Rule 10    while_statement -> WHILE LPAREN condition RPAREN LBRACE program RBRACE
+Rule 11    simple_statement -> ID EQUALS NUMBER SEMICOLON
+Rule 12    condition -> ID COMPARISON NUMBER
+
+Terminals, with rules where they appear
+
+COMPARISON           : 12
+ELSE                 : 8
+EQUALS               : 11
+FOR                  : 9
+ID                   : 9 11 12
+IF                   : 7 8
+LBRACE               : 7 8 8 9 10
+LPAREN               : 7 8 9 10
+NUMBER               : 11 12
+RBRACE               : 7 8 8 9 10
+RPAREN               : 7 8 9 10
+SEMICOLON            : 9 11
+WHILE                : 10
+error                : 
+
+Nonterminals, with rules where they appear
+
+condition            : 7 8 9 10
+for_statement        : 4
+if_statement         : 3
+program              : 2 7 8 8 9 10 0
+simple_statement     : 6 9
+statement            : 1 2
+while_statement      : 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement
+    (2) program -> . program statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    program                        shift and go to state 1
+    statement                      shift and go to state 2
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+    simple_statement               shift and go to state 6
+
+state 1
+
+    (0) S' -> program .
+    (2) program -> program . statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    statement                      shift and go to state 11
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+    simple_statement               shift and go to state 6
+
+state 2
+
+    (1) program -> statement .
+
+    IF              reduce using rule 1 (program -> statement .)
+    FOR             reduce using rule 1 (program -> statement .)
+    WHILE           reduce using rule 1 (program -> statement .)
+    ID              reduce using rule 1 (program -> statement .)
+    $end            reduce using rule 1 (program -> statement .)
+    RBRACE          reduce using rule 1 (program -> statement .)
+
+
+state 3
+
+    (3) statement -> if_statement .
+
+    IF              reduce using rule 3 (statement -> if_statement .)
+    FOR             reduce using rule 3 (statement -> if_statement .)
+    WHILE           reduce using rule 3 (statement -> if_statement .)
+    ID              reduce using rule 3 (statement -> if_statement .)
+    $end            reduce using rule 3 (statement -> if_statement .)
+    RBRACE          reduce using rule 3 (statement -> if_statement .)
+
+
+state 4
+
+    (4) statement -> for_statement .
+
+    IF              reduce using rule 4 (statement -> for_statement .)
+    FOR             reduce using rule 4 (statement -> for_statement .)
+    WHILE           reduce using rule 4 (statement -> for_statement .)
+    ID              reduce using rule 4 (statement -> for_statement .)
+    $end            reduce using rule 4 (statement -> for_statement .)
+    RBRACE          reduce using rule 4 (statement -> for_statement .)
+
+
+state 5
+
+    (5) statement -> while_statement .
+
+    IF              reduce using rule 5 (statement -> while_statement .)
+    FOR             reduce using rule 5 (statement -> while_statement .)
+    WHILE           reduce using rule 5 (statement -> while_statement .)
+    ID              reduce using rule 5 (statement -> while_statement .)
+    $end            reduce using rule 5 (statement -> while_statement .)
+    RBRACE          reduce using rule 5 (statement -> while_statement .)
+
+
+state 6
+
+    (6) statement -> simple_statement .
+
+    IF              reduce using rule 6 (statement -> simple_statement .)
+    FOR             reduce using rule 6 (statement -> simple_statement .)
+    WHILE           reduce using rule 6 (statement -> simple_statement .)
+    ID              reduce using rule 6 (statement -> simple_statement .)
+    $end            reduce using rule 6 (statement -> simple_statement .)
+    RBRACE          reduce using rule 6 (statement -> simple_statement .)
+
+
+state 7
+
+    (7) if_statement -> IF . LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> IF . LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    LPAREN          shift and go to state 12
+
+
+state 8
+
+    (9) for_statement -> FOR . LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+
+    LPAREN          shift and go to state 13
+
+
+state 9
+
+    (11) simple_statement -> ID . EQUALS NUMBER SEMICOLON
+
+    EQUALS          shift and go to state 14
+
+
+state 10
+
+    (10) while_statement -> WHILE . LPAREN condition RPAREN LBRACE program RBRACE
+
+    LPAREN          shift and go to state 15
+
+
+state 11
+
+    (2) program -> program statement .
+
+    IF              reduce using rule 2 (program -> program statement .)
+    FOR             reduce using rule 2 (program -> program statement .)
+    WHILE           reduce using rule 2 (program -> program statement .)
+    ID              reduce using rule 2 (program -> program statement .)
+    $end            reduce using rule 2 (program -> program statement .)
+    RBRACE          reduce using rule 2 (program -> program statement .)
+
+
+state 12
+
+    (7) if_statement -> IF LPAREN . condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> IF LPAREN . condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (12) condition -> . ID COMPARISON NUMBER
+
+    ID              shift and go to state 17
+
+    condition                      shift and go to state 16
+
+state 13
+
+    (9) for_statement -> FOR LPAREN . simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    ID              shift and go to state 9
+
+    simple_statement               shift and go to state 18
+
+state 14
+
+    (11) simple_statement -> ID EQUALS . NUMBER SEMICOLON
+
+    NUMBER          shift and go to state 19
+
+
+state 15
+
+    (10) while_statement -> WHILE LPAREN . condition RPAREN LBRACE program RBRACE
+    (12) condition -> . ID COMPARISON NUMBER
+
+    ID              shift and go to state 17
+
+    condition                      shift and go to state 20
+
+state 16
+
+    (7) if_statement -> IF LPAREN condition . RPAREN LBRACE program RBRACE
+    (8) if_statement -> IF LPAREN condition . RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    RPAREN          shift and go to state 21
+
+
+state 17
+
+    (12) condition -> ID . COMPARISON NUMBER
+
+    COMPARISON      shift and go to state 22
+
+
+state 18
+
+    (9) for_statement -> FOR LPAREN simple_statement . condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (12) condition -> . ID COMPARISON NUMBER
+
+    ID              shift and go to state 17
+
+    condition                      shift and go to state 23
+
+state 19
+
+    (11) simple_statement -> ID EQUALS NUMBER . SEMICOLON
+
+    SEMICOLON       shift and go to state 24
+
+
+state 20
+
+    (10) while_statement -> WHILE LPAREN condition . RPAREN LBRACE program RBRACE
+
+    RPAREN          shift and go to state 25
+
+
+state 21
+
+    (7) if_statement -> IF LPAREN condition RPAREN . LBRACE program RBRACE
+    (8) if_statement -> IF LPAREN condition RPAREN . LBRACE program RBRACE ELSE LBRACE program RBRACE
+
+    LBRACE          shift and go to state 26
+
+
+state 22
+
+    (12) condition -> ID COMPARISON . NUMBER
+
+    NUMBER          shift and go to state 27
+
+
+state 23
+
+    (9) for_statement -> FOR LPAREN simple_statement condition . SEMICOLON ID RPAREN LBRACE program RBRACE
+
+    SEMICOLON       shift and go to state 28
+
+
+state 24
+
+    (11) simple_statement -> ID EQUALS NUMBER SEMICOLON .
+
+    IF              reduce using rule 11 (simple_statement -> ID EQUALS NUMBER SEMICOLON .)
+    FOR             reduce using rule 11 (simple_statement -> ID EQUALS NUMBER SEMICOLON .)
+    WHILE           reduce using rule 11 (simple_statement -> ID EQUALS NUMBER SEMICOLON .)
+    ID              reduce using rule 11 (simple_statement -> ID EQUALS NUMBER SEMICOLON .)
+    $end            reduce using rule 11 (simple_statement -> ID EQUALS NUMBER SEMICOLON .)
+    RBRACE          reduce using rule 11 (simple_statement -> ID EQUALS NUMBER SEMICOLON .)
+
+
+state 25
+
+    (10) while_statement -> WHILE LPAREN condition RPAREN . LBRACE program RBRACE
+
+    LBRACE          shift and go to state 29
+
+
+state 26
+
+    (7) if_statement -> IF LPAREN condition RPAREN LBRACE . program RBRACE
+    (8) if_statement -> IF LPAREN condition RPAREN LBRACE . program RBRACE ELSE LBRACE program RBRACE
+    (1) program -> . statement
+    (2) program -> . program statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    program                        shift and go to state 30
+    statement                      shift and go to state 2
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+    simple_statement               shift and go to state 6
+
+state 27
+
+    (12) condition -> ID COMPARISON NUMBER .
+
+    RPAREN          reduce using rule 12 (condition -> ID COMPARISON NUMBER .)
+    SEMICOLON       reduce using rule 12 (condition -> ID COMPARISON NUMBER .)
+
+
+state 28
+
+    (9) for_statement -> FOR LPAREN simple_statement condition SEMICOLON . ID RPAREN LBRACE program RBRACE
+
+    ID              shift and go to state 31
+
+
+state 29
+
+    (10) while_statement -> WHILE LPAREN condition RPAREN LBRACE . program RBRACE
+    (1) program -> . statement
+    (2) program -> . program statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    program                        shift and go to state 32
+    statement                      shift and go to state 2
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+    simple_statement               shift and go to state 6
+
+state 30
+
+    (7) if_statement -> IF LPAREN condition RPAREN LBRACE program . RBRACE
+    (8) if_statement -> IF LPAREN condition RPAREN LBRACE program . RBRACE ELSE LBRACE program RBRACE
+    (2) program -> program . statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    RBRACE          shift and go to state 33
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    statement                      shift and go to state 11
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+    simple_statement               shift and go to state 6
+
+state 31
+
+    (9) for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID . RPAREN LBRACE program RBRACE
+
+    RPAREN          shift and go to state 34
+
+
+state 32
+
+    (10) while_statement -> WHILE LPAREN condition RPAREN LBRACE program . RBRACE
+    (2) program -> program . statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    RBRACE          shift and go to state 35
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    statement                      shift and go to state 11
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+    simple_statement               shift and go to state 6
+
+state 33
+
+    (7) if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE .
+    (8) if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE . ELSE LBRACE program RBRACE
+
+    IF              reduce using rule 7 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE .)
+    FOR             reduce using rule 7 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE .)
+    WHILE           reduce using rule 7 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE .)
+    ID              reduce using rule 7 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE .)
+    $end            reduce using rule 7 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE .)
+    RBRACE          reduce using rule 7 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE .)
+    ELSE            shift and go to state 36
+
+
+state 34
+
+    (9) for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN . LBRACE program RBRACE
+
+    LBRACE          shift and go to state 37
+
+
+state 35
+
+    (10) while_statement -> WHILE LPAREN condition RPAREN LBRACE program RBRACE .
+
+    IF              reduce using rule 10 (while_statement -> WHILE LPAREN condition RPAREN LBRACE program RBRACE .)
+    FOR             reduce using rule 10 (while_statement -> WHILE LPAREN condition RPAREN LBRACE program RBRACE .)
+    WHILE           reduce using rule 10 (while_statement -> WHILE LPAREN condition RPAREN LBRACE program RBRACE .)
+    ID              reduce using rule 10 (while_statement -> WHILE LPAREN condition RPAREN LBRACE program RBRACE .)
+    $end            reduce using rule 10 (while_statement -> WHILE LPAREN condition RPAREN LBRACE program RBRACE .)
+    RBRACE          reduce using rule 10 (while_statement -> WHILE LPAREN condition RPAREN LBRACE program RBRACE .)
+
+
+state 36
+
+    (8) if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE . LBRACE program RBRACE
+
+    LBRACE          shift and go to state 38
+
+
+state 37
+
+    (9) for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE . program RBRACE
+    (1) program -> . statement
+    (2) program -> . program statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    simple_statement               shift and go to state 6
+    program                        shift and go to state 39
+    statement                      shift and go to state 2
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+
+state 38
+
+    (8) if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE . program RBRACE
+    (1) program -> . statement
+    (2) program -> . program statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    program                        shift and go to state 40
+    statement                      shift and go to state 2
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+    simple_statement               shift and go to state 6
+
+state 39
+
+    (9) for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program . RBRACE
+    (2) program -> program . statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    RBRACE          shift and go to state 41
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    simple_statement               shift and go to state 6
+    statement                      shift and go to state 11
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+
+state 40
+
+    (8) if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program . RBRACE
+    (2) program -> program . statement
+    (3) statement -> . if_statement
+    (4) statement -> . for_statement
+    (5) statement -> . while_statement
+    (6) statement -> . simple_statement
+    (7) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE
+    (8) if_statement -> . IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE
+    (9) for_statement -> . FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE
+    (10) while_statement -> . WHILE LPAREN condition RPAREN LBRACE program RBRACE
+    (11) simple_statement -> . ID EQUALS NUMBER SEMICOLON
+
+    RBRACE          shift and go to state 42
+    IF              shift and go to state 7
+    FOR             shift and go to state 8
+    WHILE           shift and go to state 10
+    ID              shift and go to state 9
+
+    statement                      shift and go to state 11
+    if_statement                   shift and go to state 3
+    for_statement                  shift and go to state 4
+    while_statement                shift and go to state 5
+    simple_statement               shift and go to state 6
+
+state 41
+
+    (9) for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE .
+
+    IF              reduce using rule 9 (for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE .)
+    FOR             reduce using rule 9 (for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE .)
+    WHILE           reduce using rule 9 (for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE .)
+    ID              reduce using rule 9 (for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE .)
+    $end            reduce using rule 9 (for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE .)
+    RBRACE          reduce using rule 9 (for_statement -> FOR LPAREN simple_statement condition SEMICOLON ID RPAREN LBRACE program RBRACE .)
+
+
+state 42
+
+    (8) if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .
+
+    IF              reduce using rule 8 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    FOR             reduce using rule 8 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    WHILE           reduce using rule 8 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    ID              reduce using rule 8 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    $end            reduce using rule 8 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+    RBRACE          reduce using rule 8 (if_statement -> IF LPAREN condition RPAREN LBRACE program RBRACE ELSE LBRACE program RBRACE .)
+
